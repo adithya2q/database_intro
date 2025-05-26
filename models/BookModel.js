@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose=require('mongoose');
 
 const productSchema=new mongoose.Schema({
-    name:{
+   title:{
         type:String,
         required:true
     },
@@ -10,10 +10,13 @@ const productSchema=new mongoose.Schema({
         type:Number,
         required:true
     },
-    size:{
+    author:{
         type:String,
-        enum:['S','M','L','XL'],
         required:true
+    },
+    stockLeft:{
+        type:Number,
+
     },
     isActive:{
         type:Boolean,
@@ -23,16 +26,13 @@ const productSchema=new mongoose.Schema({
         type:Boolean,
         default:false
     },
-    totalStocks:{
-        type:Number,
-    },
-    stockLeft:{
-        type:Number,
+    // totalStocks:{
+    //     type:Number,
+    // },
 
-    }
 },{
         timestamps:true
     }
 );
-const ProductModel=mongoose.model('Product',productSchema);
+const ProductModel=mongoose.model('books',productSchema);
 module.exports=ProductModel;    
