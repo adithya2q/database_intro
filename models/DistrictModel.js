@@ -1,18 +1,23 @@
 const express = require('express');
 const mongoose=require('mongoose');
 
-const productSchema=new mongoose.Schema({
+
+const DistrictSchema=new mongoose.Schema({
     name:{
         type:String,
         required:true
     },
-    price:{
+    population:{
         type:Number,
         required:true
     },
-    size:{
-        type:String,
-        enum:['S','M','L','XL'],
+    area_in_sq_km:{
+        type:Number,
+        required:true
+    },
+    stateId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'States',
         required:true
     },
     isActive:{
@@ -23,16 +28,11 @@ const productSchema=new mongoose.Schema({
         type:Boolean,
         default:false
     },
-    totalStocks:{
-        type:Number,
-    },
-    stockLeft:{
-        type:Number,
-
-    }
 },{
         timestamps:true
     }
 );
-const ProductModel=mongoose.model('Product',productSchema);
-module.exports=ProductModel;    
+
+
+const DistrictModel=mongoose.model('Districts',DistrictSchema);
+module.exports= DistrictModel;
